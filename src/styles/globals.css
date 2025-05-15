@@ -1,0 +1,39 @@
+:root {
+  --text-color: #111111;
+  --text-secondary: #4a4a4a;
+  --nav-text: #ffffff;
+  --sidebar-text: #ffffff;
+}
+
+[data-theme='dark'] {
+  --text-color: #ffffff;
+  --text-secondary: #a0a0a0;
+  --nav-text: #ffffff;
+  --sidebar-text: #ffffff;
+}
+
+/* Add text color utility classes */
+.text-theme {
+  color: var(--text-color);
+}
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+.nav-text {
+  color: var(--nav-text);
+}
+
+.sidebar-text {
+  color: var(--sidebar-text);
+}
+
+/* Ensure cards have good contrast in both modes */
+.card-starlight {
+  /* ...existing code... */
+  background-color: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
+  color: #ffffff; /* White text for consistent readability */
+}
+
+/* ...existing code... */

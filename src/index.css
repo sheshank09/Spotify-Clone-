@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000; /* Black text for light mode */
+  --nav-bg-color: #1a202c; /* Default dark color */
+  --sidebar-bg-color: #1a202c; /* Default dark color */
+  --main-bg-color: #000000; /* Default dark color */
+}
+
+.dark {
+  --bg-color: #121212; /* Darker background for better contrast */
+  --text-color: #ffffff; /* White text for dark mode */
+  --nav-bg-color: #1f1f1f; /* Slightly lighter nav background */
+  --sidebar-bg-color: #1f1f1f; /* Slightly lighter sidebar background */
+  --main-bg-color: #181818; /* Slightly lighter main background */
+}
+
+body {
+  background: linear-gradient(180deg, #1a1a1a, #0d0d0d); /* Gradient of dark gray */
+  color: var(--text-color);
+}
+
+body .particle:nth-child(1) { top: 5%; left: 10%; animation-delay: 0s; }
+
+nav, .sidebar {
+  font-weight: bold; /* Make text bold in navigation bar and sidebar */
+}
+
+nav .spotify-button {
+  font-size: 4.5rem; /* Further increased font size */
+  padding: 1.5rem 1rem; /* Retained padding for better appearance */
+}
+
+.hover:shadow-lg {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+.hover:shadow-xl {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes starlight {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); }
+  50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.2), 0 0 50px rgba(255, 255, 255, 0.1); }
+}
+
+.card-starlight {
+  position: relative;
+}
+
+.card-starlight::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+  animation: starlight 2s infinite;
+  border-radius: inherit;
+}
+
+.card-starlight:hover::after {
+  opacity: 1;
+}
+
+.main-content {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.9); /* Add transparency to reveal the constellation */
+}
+
+.constellation {
+  position: fixed; /* Change to fixed to cover the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0; /* Ensure it stays behind the content */
+  mask-image: linear-gradient(to right, transparent 16rem, black 16rem); /* Exclude sidebar area */
+  -webkit-mask-image: linear-gradient(to right, transparent 16rem, black 16rem); /* For WebKit browsers */
+}
+
+.star {
+  position: absolute;
+  width: 3px; /* Increase size for better visibility */
+  height: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+.line {
+  position: absolute;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.3); /* Adjust opacity for better visibility */
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
